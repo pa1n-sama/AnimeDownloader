@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox import options
+from selenium.webdriver.chrome import options
 from bs4 import BeautifulSoup
 from threading import Thread
 import requests
@@ -11,7 +11,7 @@ class Anime:
         op = options.Options()
         op.add_argument("--headless")
         op.add_argument("--disablegpu")
-        self.drive = webdriver.Firefox(options=op)
+        self.drive = webdriver.Chrome(options=op)
         os.system("clear")
         Thread(target=lambda:self.drive.get("https://www.google.com")).start()
         
@@ -44,7 +44,7 @@ class Anime:
         num = int(input("Type the number of the anime you want to download: "))
         os.system("clear")
         self.anime_name = self.names[num]
-        self.Download_Directory= f"/home/pain/Downloads/Videos/{self.anime_name}"
+        self.Download_Directory= self.anime_name
 
         try:
             os.mkdir(self.Download_Directory)
