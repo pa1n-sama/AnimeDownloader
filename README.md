@@ -29,8 +29,3 @@ pip install selenium beautifulsoup4 requests
 3. Enter the anime name when prompted.
 4. Select the anime from the list.
 5. Confirm to download all episodes.
-
-Episodes will be saved to:
-```
-/home/pain/Downloads/Videos/<anime_name>
-```
