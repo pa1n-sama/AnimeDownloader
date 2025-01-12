@@ -55,7 +55,6 @@ The scripts will automatically:
 - Create a directory for the anime
 - Skip existing episodes
 - Download the highest quality available
-- Name files in format: `[anime-name]-ep[number].mp4`
 
 ## Note
 Both scripts support Windows and Unix-based systems, automatically using the appropriate download method (PowerShell or wget) based on your operating system.
