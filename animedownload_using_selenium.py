@@ -12,7 +12,7 @@ import time
 class Anime:
     def __init__(self):
         self.failed = False
-        self.configfile=os.path.join(os.path.expanduser("~"),".config/animedownload/config")
+        self.configfile=os.path.join(__file__.replace(os.path.basename(__file__),""),"config")
         if os.path.exists(self.configfile):
             with open(self.configfile,'r') as file:
                 self.maindirectory=file.readline().replace("\n",'')
@@ -21,7 +21,7 @@ class Anime:
             with open(self.configfile,'w') as file:
                 file.write(self.maindirectory)
         if not os.path.exists(self.maindirectory):
-            self.maindirectory=os.path.join(os.path.expanduser("~"),"FDM")
+            self.maindirectory=__file__.replace(os.path.basename(__file__), "")
         Thread(target=self.prerun,daemon=True).start()
         self.search_name = input("\033ctype the Your anime name: ").replace(" ","+")
 
