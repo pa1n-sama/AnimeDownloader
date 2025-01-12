@@ -10,6 +10,7 @@ import requests
 import sys
 import os
 import time
+import platform
 
 
 class Anime:
@@ -135,7 +136,13 @@ class Anime:
 
                     except Exception as ec:
                         break
-                    os.system(f'wget -O "{self.Download_Directory}/{self.anime_name}-ep{episode_num}.mp4" "{resolution}"')
+
+                    # Download file using appropriate method
+                    if platform.system() == "Windows":
+                        subprocess.run(['powershell', '-Command', f'Invoke-WebRequest -Uri "{resolution}" -OutFile "{self.Download_Directory}\\{self.anime_name}-ep{episode_num}.mp4"'])
+                    else:
+                        subprocess.run(['wget', '-O', f'{self.Download_Directory}/{self.anime_name}-ep{episode_num}.mp4', resolution])
+
                 episode_num += 1
 
 
