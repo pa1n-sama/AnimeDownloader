@@ -25,7 +25,7 @@ class Anime:
             with open(self.configfile, 'w') as file:
                 file.write(self.maindirectory)
         if not os.path.exists(self.maindirectory):
-            self.maindirectory = os.path.join(os.path.expanduser("~"), "FDM")
+            self.maindirectory = os.path.join(os.path.expanduser("~"), "Downloads")
         Thread(target=self.prerun, daemon=True).start()
         self.search_name = input("\033ctype the Your anime name: ").replace(" ", "+")
 
@@ -74,7 +74,7 @@ class Anime:
         print("\033c")
         soup = self.getre(f"https://anime3rb.com/search?q={self.search_name}&page={1}")
 
-        titles = soup.find_all("h2", class_="pt-1 text-[1.06rem] text-ellipsis whitespace-nowrap overflow-hidden rtl:text-right")
+        titles = soup.find_all("h2", class_="title-name")
         for j in range(len(titles)):
             self.names.append(titles[j].get_text().replace(" ", "-"))
             name = titles[j].get_text().replace(" ", "-").replace(":", "-").replace("--", "-").lower()
