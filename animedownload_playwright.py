@@ -89,7 +89,7 @@ with sync_playwright() as p:
     page.goto(f"https://anime3rb.com/search?q={search_name}&page={1}")
     html_content = page.content()
     soup = BeautifulSoup(html_content, "html.parser")
-    titles = soup.find_all("h2", class_="pt-1 text-[1.06rem] text-ellipsis whitespace-nowrap overflow-hidden rtl:text-right")
+    titles = soup.find_all("h2", class_="title-name")
     for j in range(len(titles)):
         names.append(titles[j].get_text().replace(" ", "-"))
         name = titles[j].get_text().replace(" ", "-").replace(":", "-").replace("--", "-").lower()
